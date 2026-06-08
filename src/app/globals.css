@@ -1,0 +1,39 @@
+@import "tailwindcss";
+
+/* ---- cev.studio design tokens ---------------------------------------- */
+/* Swiss editorial: off-white paper, near-black ink, hairline rules,      */
+/* one restrained accent reserved for action (the send affordance).       */
+
+:root {
+  --paper: #f4f3ee; /* off-white canvas */
+  --ink: #16150f; /* near-black */
+  --ink-soft: #6b6a60; /* muted ink for secondary text */
+  --rule: #d7d5ca; /* hairline grid rules */
+  --accent: #ff3a1d; /* signal red — action only */
+  --accent-ink: #f4f3ee; /* text on accent */
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-rule: var(--rule);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+  --font-display: var(--font-display);
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans), system-ui, sans-serif;
+}
+
+/* Selection echoes the accent. */
+::selection {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
