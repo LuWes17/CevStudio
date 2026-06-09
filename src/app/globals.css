@@ -87,7 +87,8 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .reveal,
   .rule-draw,
-  .marquee-track {
+  .marquee-track,
+  .animate-ping {
     animation: none !important;
     opacity: 1 !important;
     transform: none !important;
