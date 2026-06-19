@@ -62,7 +62,7 @@ function SubmitButton() {
     <button
       type="submit"
       disabled={pending}
-      className="group inline-flex items-center justify-between gap-4 self-start bg-ink px-7 py-4 font-mono text-xs uppercase tracking-[0.2em] text-paper transition-colors duration-200 hover:bg-accent hover:text-accent-ink disabled:cursor-wait disabled:opacity-70"
+      className="btn-lime group inline-flex items-center justify-between gap-4 self-start bg-accent px-7 py-4 font-mono text-xs font-medium uppercase tracking-[0.2em] text-accent-ink hover:-translate-y-px disabled:cursor-wait disabled:opacity-70"
     >
       <span>{pending ? "Checking…" : "Enter"}</span>
       <span aria-hidden className="transition-transform duration-200 group-hover:translate-x-1">

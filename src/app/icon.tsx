@@ -3,8 +3,8 @@ import { ImageResponse } from "next/og";
 export const size = { width: 32, height: 32 };
 export const contentType = "image/png";
 
-// Favicon derived from the wordmark: lowercase "c" on near-black ink with the
-// signature accent square standing in for the dot.
+// Favicon derived from the wordmark: lowercase "c" on the dark canvas with the
+// signature lime square standing in for the dot.
 export default function Icon() {
   return new ImageResponse(
     (
@@ -12,7 +12,7 @@ export default function Icon() {
         style={{
           width: "100%",
           height: "100%",
-          background: "#16150f",
+          background: "#1d1d1d",
           display: "flex",
           alignItems: "flex-end",
           justifyContent: "center",
@@ -28,7 +28,7 @@ export default function Icon() {
         >
           <span
             style={{
-              color: "#f4f3ee",
+              color: "#f2f2ea",
               fontSize: 24,
               fontWeight: 800,
               lineHeight: 1,
@@ -41,7 +41,7 @@ export default function Icon() {
             style={{
               width: 5,
               height: 5,
-              background: "#ff3a1d",
+              background: "#b3e611",
               marginLeft: 1,
               marginBottom: 3,
             }}

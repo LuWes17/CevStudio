@@ -1,24 +1,33 @@
 @import "tailwindcss";
 
 /* ---- cev.studio design tokens ---------------------------------------- */
-/* Swiss editorial: off-white paper, near-black ink, hairline rules,      */
-/* one restrained accent reserved for action (the send affordance).       */
+/* Dark studio: near-black canvas, white as the workhorse, a single charged */
+/* lime reserved for action (CTA, headline emphasis, focus, live signals),  */
+/* dark olive as the quiet supporting tone where flat lime would shout.     */
 
 :root {
-  --paper: #f4f3ee; /* off-white canvas */
-  --ink: #16150f; /* near-black */
-  --ink-soft: #6b6a60; /* muted ink for secondary text */
-  --rule: #d7d5ca; /* hairline grid rules */
-  --accent: #ff3a1d; /* signal red — action only */
-  --accent-ink: #f4f3ee; /* text on accent */
+  --paper: #1d1d1d; /* near-black canvas */
+  --surface: #232320; /* faintly raised surface */
+  --olive: #333f00; /* dark olive — supporting tone, never text */
+  --ink: #f2f2ea; /* primary text, off-white */
+  --ink-soft: #8c8c81; /* muted text for secondary copy */
+  --rule: #34342e; /* hairline grid rules on dark */
+  --accent: #b3e611; /* lime — action only */
+  --accent-soft: #d4f55a; /* lighter lime, gradient highlight */
+  --accent-deep: #6f8f0a; /* deeper lime, gradient tail */
+  --accent-ink: #161708; /* near-black text on lime */
 }
 
 @theme inline {
   --color-paper: var(--paper);
+  --color-surface: var(--surface);
+  --color-olive: var(--olive);
   --color-ink: var(--ink);
   --color-ink-soft: var(--ink-soft);
   --color-rule: var(--rule);
   --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-accent-deep: var(--accent-deep);
   --color-accent-ink: var(--accent-ink);
 
   --font-sans: var(--font-sans);
@@ -30,6 +39,7 @@ body {
   background: var(--paper);
   color: var(--ink);
   font-family: var(--font-sans), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
 
 /* Selection echoes the accent. */
@@ -38,8 +48,93 @@ body {
   color: var(--accent-ink);
 }
 
+/* ---- atmosphere ------------------------------------------------------- */
+/* A soft lime/olive glow bleeding from the top-right, plus a fine grain    */
+/* overlay so the black reads as depth rather than flat fill.               */
+
+.atmosphere {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      60rem 50rem at 88% -8%,
+      color-mix(in oklab, var(--accent) 13%, transparent),
+      transparent 60%
+    ),
+    radial-gradient(
+      48rem 44rem at 92% 14%,
+      color-mix(in oklab, var(--olive) 55%, transparent),
+      transparent 62%
+    ),
+    radial-gradient(
+      40rem 40rem at 6% 108%,
+      color-mix(in oklab, var(--olive) 38%, transparent),
+      transparent 60%
+    );
+}
+
+/* Fine film grain — masks banding in the gradients, adds tactility. */
+.grain::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ---- accent helpers --------------------------------------------------- */
+
+/* Lime gradient text — for the single emphasised word, never whole blocks. */
+.text-lime-grad {
+  background: linear-gradient(
+    104deg,
+    var(--accent-soft) 0%,
+    var(--accent) 46%,
+    var(--accent-deep) 118%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Primary CTA: soft lime bloom on hover, never at rest. */
+.btn-lime {
+  transition: box-shadow 0.22s ease, filter 0.22s ease, transform 0.22s ease;
+}
+.btn-lime:hover {
+  filter: brightness(1.05);
+  box-shadow:
+    0 0 0 1px color-mix(in oklab, var(--accent) 45%, transparent),
+    0 14px 44px -14px color-mix(in oklab, var(--accent) 60%, transparent);
+}
+
+/* Elevated hero-form panel: a quiet olive→dark wash, not flat lime. */
+.panel-hero {
+  background:
+    linear-gradient(
+      180deg,
+      color-mix(in oklab, var(--olive) 30%, transparent) 0%,
+      transparent 42%
+    ),
+    color-mix(in oklab, var(--surface) 70%, var(--paper));
+}
+
+/* A single hairline that fades into lime — used as a quiet accent edge. */
+.rule-lime {
+  background: linear-gradient(
+    90deg,
+    var(--accent) 0%,
+    color-mix(in oklab, var(--accent) 35%, transparent) 38%,
+    transparent 78%
+  );
+}
+
 /* ---- motion ---------------------------------------------------------- */
-/* One orchestrated page-load: lines rise in sequence, rules draw across. */
+/* One orchestrated page-load: lines rise in sequence.                     */
 
 @keyframes rise {
   from {

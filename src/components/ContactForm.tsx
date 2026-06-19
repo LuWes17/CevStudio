@@ -95,7 +95,7 @@ function Field({
         placeholder={placeholder}
         autoComplete={autoComplete}
         aria-invalid={error ? true : undefined}
-        className="mt-2 w-full border-b border-rule bg-transparent pb-2 font-display text-2xl text-ink placeholder:text-rule transition-colors duration-200 outline-none focus:border-accent"
+        className="mt-2 w-full border-b border-rule bg-transparent pb-2 font-display text-2xl text-ink placeholder:text-ink-soft/45 transition-colors duration-200 outline-none focus:border-accent"
       />
     </div>
   );
@@ -119,7 +119,7 @@ function MessageField({ error }: { error?: string }) {
         rows={3}
         placeholder="What are you making, and where do we come in?"
         aria-invalid={error ? true : undefined}
-        className="mt-2 w-full resize-none border-b border-rule bg-transparent pb-2 font-display text-2xl text-ink placeholder:text-rule transition-colors duration-200 outline-none focus:border-accent"
+        className="mt-2 w-full resize-none border-b border-rule bg-transparent pb-2 font-display text-2xl text-ink placeholder:text-ink-soft/45 transition-colors duration-200 outline-none focus:border-accent"
       />
     </div>
   );
@@ -131,7 +131,7 @@ function SubmitButton() {
     <button
       type="submit"
       disabled={pending}
-      className="group mt-1 inline-flex items-center justify-between gap-4 self-start bg-ink px-7 py-4 font-mono text-xs uppercase tracking-[0.2em] text-paper transition-colors duration-200 hover:bg-accent hover:text-accent-ink disabled:cursor-wait disabled:opacity-70"
+      className="btn-lime group mt-1 inline-flex items-center justify-between gap-4 self-start bg-accent px-7 py-4 font-mono text-xs font-medium uppercase tracking-[0.2em] text-accent-ink hover:-translate-y-px disabled:cursor-wait disabled:opacity-70"
     >
       <span>{pending ? "Sending…" : "Send it over"}</span>
       <span

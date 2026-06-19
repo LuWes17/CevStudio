@@ -11,8 +11,10 @@ export default function OpengraphImage() {
         style={{
           width: "100%",
           height: "100%",
-          background: "#f4f3ee",
-          color: "#16150f",
+          background: "#1d1d1d",
+          backgroundImage:
+            "radial-gradient(900px 700px at 100% -10%, rgba(179,230,17,0.16), transparent 60%), radial-gradient(700px 600px at 110% 30%, rgba(51,63,0,0.7), transparent 62%)",
+          color: "#f2f2ea",
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
@@ -27,25 +29,27 @@ export default function OpengraphImage() {
             style={{
               width: 12,
               height: 12,
-              background: "#ff3a1d",
+              background: "#b3e611",
               margin: "0 6px 8px",
             }}
           />
-          <span style={{ color: "#6b6a60", fontWeight: 500 }}>studio</span>
+          <span style={{ color: "#8c8c81", fontWeight: 500 }}>studio</span>
         </div>
 
         {/* headline */}
         <div
           style={{
             display: "flex",
+            flexWrap: "wrap",
             fontSize: 116,
             fontWeight: 800,
             lineHeight: 0.95,
             letterSpacing: -4,
-            maxWidth: 900,
+            maxWidth: 940,
           }}
         >
-          Tell us what you&rsquo;re making.
+          <span>Tell us what you&rsquo;re&nbsp;</span>
+          <span style={{ color: "#b3e611" }}>making.</span>
         </div>
 
         {/* services */}
@@ -54,7 +58,7 @@ export default function OpengraphImage() {
             display: "flex",
             fontSize: 22,
             letterSpacing: 3,
-            color: "#6b6a60",
+            color: "#8c8c81",
             textTransform: "uppercase",
             whiteSpace: "nowrap",
           }}

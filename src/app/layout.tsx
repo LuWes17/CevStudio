@@ -1,25 +1,25 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Bricolage_Grotesque, IBM_Plex_Mono } from "next/font/google";
+import { Hanken_Grotesk, Archivo, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
-// Body / UI — clean neutral grotesk.
-const geistSans = Geist({
+// Body / UI — humanist grotesk, warm but precise.
+const sans = Hanken_Grotesk({
   variable: "--font-sans",
   subsets: ["latin"],
 });
 
-// Labels, service ticker, meta — editorial monospace.
-const plexMono = IBM_Plex_Mono({
+// Labels, indices, service ticker, meta — technical monospace.
+const mono = JetBrains_Mono({
   variable: "--font-mono",
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
+  weight: ["400", "500", "700"],
 });
 
-// Display headline + wordmark — characterful editorial grotesque.
-const bricolage = Bricolage_Grotesque({
+// Display headline + wordmark — heavy industrial grotesque.
+const display = Archivo({
   variable: "--font-display",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
+  weight: ["500", "600", "700", "800", "900"],
 });
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://cev.studio";
@@ -59,7 +59,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#f4f3ee",
+  themeColor: "#1d1d1d",
 };
 
 export default function RootLayout({
@@ -70,9 +70,12 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${plexMono.variable} ${bricolage.variable} h-full antialiased`}
+      className={`${sans.variable} ${mono.variable} ${display.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="grain min-h-full flex flex-col">
+        <div className="atmosphere" aria-hidden />
+        {children}
+      </body>
     </html>
   );
 }
